@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$conn = new mysqli("localhost", "u630586235_feliya_db", "Ys]R#*nM8", "u630586235_feliya_db");
+// $conn = new mysqli("localhost", "u630586235_feliya_db", "Ys]R#*nM8", "u630586235_feliya_db");
 
 
 // Connect to the database

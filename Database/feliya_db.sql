@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2024 at 01:23 PM
+-- Generation Time: Feb 23, 2024 at 07:12 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,6 +39,25 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forgot_password`
+--
+
+CREATE TABLE `forgot_password` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `request_time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `forgot_password`
+--
+
+INSERT INTO `forgot_password` (`id`, `email`, `request_time`) VALUES
+(2, 'nasiryt.827@gmail.com', '2024-02-23 05:35:07');
 
 -- --------------------------------------------------------
 
@@ -163,6 +182,13 @@ CREATE TABLE `users` (
   `balance` decimal(10,2) DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `age`, `wallet_address`, `balance`) VALUES
+(1, 'nasir', '123456', 'nasiryt.827@gmail.com', '3176526827', 23, '0x742d35Cc6634C0532925a3b844Bc454e4438f44e', 0.00);
+
 -- --------------------------------------------------------
 
 --
@@ -188,6 +214,12 @@ CREATE TABLE `withdrawals` (
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `forgot_password`
+--
+ALTER TABLE `forgot_password`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -248,6 +280,12 @@ ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -281,7 +319,7 @@ ALTER TABLE `subscriptions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `withdrawals`

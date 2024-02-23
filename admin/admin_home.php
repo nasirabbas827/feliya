@@ -17,6 +17,7 @@ $totalParticipants = 0;
 $totalWithdrawalRequests = 0;
 $totalQueriesForReply = 0;
 $totalBalance = 0; // New variable for total balance
+$totalForgotPasswordRequests = 0; // New variable for total forgot password requests
 
 // Fetch total balance of all users
 $totalBalanceResult = mysqli_query($conn, "SELECT SUM(balance) AS total_balance FROM users");
@@ -63,6 +64,12 @@ if ($totalWithdrawalRequestsResult) {
 
 // Fetch total queries for reply
 $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM messages WHERE reply_text IS NULL"))['total'];
+
+// Fetch total forgot password requests
+$totalForgotPasswordRequestsResult = mysqli_query($conn, "SELECT COUNT(*) AS total FROM forgot_password");
+if ($totalForgotPasswordRequestsResult) {
+    $totalForgotPasswordRequests = mysqli_fetch_assoc($totalForgotPasswordRequestsResult)['total'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -151,6 +158,18 @@ $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) 
                 <div class="card-body">
                     <h5 class="card-title">Total Queries for Reply</h5>
                     <p class="card-text"><?php echo $totalQueriesForReply; ?></p>
+                </div>
+            </div>
+        </div>
+        <!-- Total Forgot Password Requests Card -->
+        <div class="col-md-4">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Total Forgot Password Requests</h5>
+                    <p class="card-text"><?php echo $totalForgotPasswordRequests; ?></p>
+                </div>
+                <div class="card-footer">
+                    <a href="forgot_password_requests.php" class="btn btn-primary">View Requests</a>
                 </div>
             </div>
         </div>
