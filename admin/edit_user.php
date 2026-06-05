@@ -37,7 +37,7 @@ if (mysqli_num_rows($result) == 1) {
         $balance = $_POST['balance'];
 
         // Update user details in the database
-        $update_sql = "UPDATE users SET username = '$username', email = '$email', password = '$password', phone = '$phone', age = '$age', wallet_address = '$wallet_address', balance = '$balance' WHERE id = $id";
+        $update_sql = "UPDATE users SET username = '$username', email = '$email', password = "YOUR_OWN_API_KEY", phone = '$phone', age = '$age', wallet_address = '$wallet_address', balance = '$balance' WHERE id = $id";
         if (mysqli_query($conn, $update_sql)) {
             header("location: view_users.php");
             exit;
